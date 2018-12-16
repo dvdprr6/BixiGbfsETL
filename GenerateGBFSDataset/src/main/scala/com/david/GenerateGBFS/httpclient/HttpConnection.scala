@@ -5,7 +5,6 @@ import org.apache.http.HttpHeaders
 import org.apache.http.client.methods.{CloseableHttpResponse, HttpGet}
 import org.apache.http.impl.client.HttpClients
 
-
 object HttpConnection extends IHttpConnection {
 
   override def sendHttpGet(url: String): String = {
