@@ -19,7 +19,7 @@ object HttpConnection extends IHttpConnection {
     return jsonResponseBody
   }
 
-  private val extractResponseBody = (httpResponse: CloseableHttpResponse) => {
-    IOUtils.toString(httpResponse.getEntity.getContent, "UTF-8")
+  private def extractResponseBody(httpResponse: CloseableHttpResponse): String = {
+    return IOUtils.toString(httpResponse.getEntity.getContent, "UTF-8")
   }
 }
