@@ -3,7 +3,6 @@ package com.david.GenerateGBFS.main
 import com.david.GenerateGBFS.hadoop.HDFS
 import com.david.GenerateGBFS.httpclient.HttpConnection
 import com.david.GenerateGBFS.utils.Constants
-
 import org.json.JSONObject
 
 object Main extends App{
@@ -34,7 +33,7 @@ object Main extends App{
 
   /** READ JSON FILES FROM HDFS AND CONVERT TO DATAFRAME **/
   val stationStatusDataFrame = HDFS.read(Constants.HDFS_STATION_STATUS_JSON, Constants.FORMAT_JSON, Constants.STATION_STATUS_COLUMNS)
-  val systemAlertsDataFrame = HDFS.read(Constants.HDFS_SYSTEM_ALERTS_JSON, Constants.FORMAT_JSON)
+  val systemAlertsDataFrame = HDFS.read(Constants.HDFS_SYSTEM_ALERTS_JSON, Constants.FORMAT_JSON, Constants.SYSTEM_ALERTS_COLUMNS)
   val systemInformationDataFrame = HDFS.read(Constants.HDFS_SYSTEM_INFORMATION_JSON, Constants.FORMAT_JSON, Constants.SYSTEM_INFORMATION_COLUMNS)
   val stationInformationDataFrame = HDFS.read(Constants.HDFS_STATION_INFORMATION_JSON, Constants.FORMAT_JSON, Constants.STATION_INFORMATION_COLUMNS)
 
@@ -43,4 +42,5 @@ object Main extends App{
   systemAlertsDataFrame.rdd.map(x => x.mkString(Constants.DELIMITER)).saveAsTextFile(Constants.HDFS_SYSTEM_ALERTS)
   systemInformationDataFrame.rdd.map(x => x.mkString(Constants.DELIMITER)).saveAsTextFile(Constants.HDFS_SYSTEM_INFORMATION)
   stationInformationDataFrame.rdd.map(x => x.mkString(Constants.DELIMITER)).saveAsTextFile(Constants.HDFS_STATION_INFORMATION)
+
 }
