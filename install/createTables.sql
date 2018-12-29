@@ -7,9 +7,9 @@ CREATE EXTERNAL TABLE IF NOT EXISTS ext_station_status(
   num_bikes_disabled          INTEGER,
   num_docks_available         INTEGER,
   num_docks_disabled          INTEGER,
-  is_installed                TINYINT,
-  is_renting                  TINYINT,
-  is_returning                TINYINT,
+  is_installed                INTEGER,
+  is_renting                  INTEGER,
+  is_returning                INTEGER,
   last_reported               BIGINT,
   eightd_has_available_keys   BOOLEAN
 )
