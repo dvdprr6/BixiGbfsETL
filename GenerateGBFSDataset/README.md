@@ -33,6 +33,7 @@ The two datatsets [station_status.json](https://api-core.bixi.com/gbfs/en/statio
 ```station_information.json``` has a column or key called ```short_name```. This column or key represents the code of the station. This allows a one-to-one relationship with the static data (Trip History), for example if we take Trip History for the Year 2018, we can see the relationship with ```Stations_2018.csv```. This relationship will then allow us find the trip history between the months from March to November of 2018.
 
 ## Diagram
+I used [draw.io](htps://www.draw.io) to create the diagram. The jpeg and xml can be found [here](https://github.com/dvdprr6/BixiGbfsETL/tree/master/diagrams)
 
 ## References
 1. Bixi open data: https://www.bixi.com/en/open-data
