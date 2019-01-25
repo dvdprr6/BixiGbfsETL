@@ -1,0 +1,39 @@
+apply plugin: 'java-library'
+
+group 'com.david.GBFSCron'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.7.7'
+  compile group: 'org.apache.hadoop', name: 'hadoop-client', version: '2.7.7'
+
+  compile group: 'org.apache.hbase', name: 'hbase-client', version: '2.1.2'
+  compile group: 'org.apache.hbase', name: 'hbase-common', version: '2.1.2'
+
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+  manifest {
+    attributes(
+      'Implementation-title': project.name,
+      'Main-Class': 'com.david.GBFSCron.main.Main'
+    )
+  }
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+
+
+task buildJar(type: Copy){
+  dependsOn jar
+}
