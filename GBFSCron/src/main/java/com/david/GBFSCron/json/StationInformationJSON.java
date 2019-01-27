@@ -1,40 +1,40 @@
 package com.david.GBFSCron.json;
 
-import com.david.GBFSCron.model.SystemInformation;
+import com.david.GBFSCron.model.StationInformation;
 import com.david.GBFSCron.utils.JSONParser;
 import org.json.JSONObject;
 
 import java.util.List;
 
-public class SystemInformationJSON {
-    public String stationId;
-    public String externalId;
+public class StationInformationJSON {
+    public String station_id;
+    public String external_id;
     public String name;
-    public String shortName;
+    public String short_name;
     public String lat;
     public String lon;
-    public List<String> rentalMethods;
+    public List<String> rental_methods;
     public Integer capacity;
-    public Boolean eightdHasKeyDispenser;
-    public Boolean hasKiosk;
+    public Boolean eightd_has_key_dispenser;
+    public Boolean has_kiosk;
 
     public JSONObject toJSON(){
         return JSONParser.toJSON(this.getClass(), this);
     }
 
-    public SystemInformation toModel(){
-        SystemInformation systemInformation = new SystemInformation();
-        systemInformation.setStationId(stationId);
-        systemInformation.setExternalId(externalId);
-        systemInformation.setName(name);
-        systemInformation.setShortName(shortName);
-        systemInformation.setLat(lat);
-        systemInformation.setLon(lon);
-        systemInformation.setRentalMethods(rentalMethods);
-        systemInformation.setCapacity(capacity);
-        systemInformation.setEightdHasKeyDispenser(eightdHasKeyDispenser);
-        systemInformation.setHasKiosk(hasKiosk);
+    public StationInformation toModel(){
+        StationInformation stationInformation = new StationInformation();
+        stationInformation.setStationId(station_id);
+        stationInformation.setExternalId(external_id);
+        stationInformation.setName(name);
+        stationInformation.setShortName(short_name);
+        stationInformation.setLat(lat);
+        stationInformation.setLon(lon);
+        stationInformation.setRentalMethods(rental_methods);
+        stationInformation.setCapacity(capacity);
+        stationInformation.setEightdHasKeyDispenser(eightd_has_key_dispenser);
+        stationInformation.setHasKiosk(has_kiosk);
 
-        return systemInformation;
+        return stationInformation;
     }
 }

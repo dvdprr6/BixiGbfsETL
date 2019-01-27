@@ -1,9 +1,9 @@
-package com.david.GBFSCron.dao.systeminformation;
+package com.david.GBFSCron.dao.stationinformation;
 
-import com.david.GBFSCron.model.SystemInformation;
+import com.david.GBFSCron.model.StationInformation;
 
 import java.util.List;
 
-public interface SystemInformationDao {
-    public void insert(List<SystemInformation> systemInformation);
+public interface StationInformationDao {
+    public void insert(List<StationInformation> stationInformationList, long lastUpdated);
 }

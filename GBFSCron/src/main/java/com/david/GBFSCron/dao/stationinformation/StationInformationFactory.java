@@ -1,9 +1,7 @@
-package com.david.GBFSCron.dao.systeminformation;
+package com.david.GBFSCron.dao.stationinformation;
 
-import com.david.GBFSCron.model.SystemInformation;
-
-public class SystemInformationFactory {
-    public static SystemInformationDao getSystemInformationDao(){
-        return new SystemInformationDaoImpl();
+public class StationInformationFactory {
+    public static StationInformationDao getSystemInformationDao(){
+        return new StationInformationDaoImpl();
     }
 }

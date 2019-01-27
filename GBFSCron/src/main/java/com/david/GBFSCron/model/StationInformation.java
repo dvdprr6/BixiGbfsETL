@@ -1,10 +1,10 @@
 package com.david.GBFSCron.model;
 
-import com.david.GBFSCron.json.SystemInformationJSON;
+import com.david.GBFSCron.json.StationInformationJSON;
 
 import java.util.List;
 
-public class SystemInformation {
+public class StationInformation {
     private String stationId;
     private String externalId;
     private String name;
@@ -16,7 +16,7 @@ public class SystemInformation {
     private Boolean eightdHasKeyDispenser;
     private Boolean hasKiosk;
 
-    public SystemInformation(){
+    public StationInformation(){
 
     }
 
@@ -100,19 +100,19 @@ public class SystemInformation {
         this.hasKiosk = hasKiosk;
     }
 
-    public SystemInformationJSON toSystemInformationJSON(){
-        SystemInformationJSON systemInformationJSON = new SystemInformationJSON();
-        systemInformationJSON.stationId = stationId;
-        systemInformationJSON.externalId = externalId;
-        systemInformationJSON.name = name;
-        systemInformationJSON.shortName = shortName;
-        systemInformationJSON.lat = lat;
-        systemInformationJSON.lon = lon;
-        systemInformationJSON.rentalMethods = rentalMethods;
-        systemInformationJSON.capacity = capacity;
-        systemInformationJSON.eightdHasKeyDispenser = eightdHasKeyDispenser;
-        systemInformationJSON.hasKiosk = hasKiosk;
+    public StationInformationJSON toSystemInformationJSON(){
+        StationInformationJSON stationInformationJSON = new StationInformationJSON();
+        stationInformationJSON.station_id = stationId;
+        stationInformationJSON.external_id = externalId;
+        stationInformationJSON.name = name;
+        stationInformationJSON.short_name = shortName;
+        stationInformationJSON.lat = lat;
+        stationInformationJSON.lon = lon;
+        stationInformationJSON.rental_methods = rentalMethods;
+        stationInformationJSON.capacity = capacity;
+        stationInformationJSON.eightd_has_key_dispenser = eightdHasKeyDispenser;
+        stationInformationJSON.has_kiosk = hasKiosk;
 
-        return systemInformationJSON;
+        return stationInformationJSON;
     }
 }

@@ -6,6 +6,13 @@ import org.apache.hadoop.hbase.client.ConnectionFactory;
 
 import java.io.IOException;
 
+/*
+REFERENCE:
+create_namespace 'BIXI'
+create 'BIXI:GBFS',  {NAME => 'STATION_INFORMATION', VERSIONS => 10}, {NAME => 'GOOGLE_GEOCODING', VERSIONS => 10}
+
+*/
+
 public class HBaseConnection {
     private static ClusterConnection clusterConnection;
 
