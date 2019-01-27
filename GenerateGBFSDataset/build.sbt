@@ -10,6 +10,8 @@ scalaVersion := "2.11.8"
 //libraryDependencies += "com.github.agourlay" %% "json-2-csv" % "0.4.1"
 libraryDependencies += "org.apache.httpcomponents" % "httpclient" % "4.5.6"
 libraryDependencies += "org.json" % "json" % "20180813"
+libraryDependencies += "org.json4s" %% "json4s-native" % "3.6.4"
+libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.4"
 libraryDependencies += "commons-io" % "commons-io" % "2.6"
 
 
