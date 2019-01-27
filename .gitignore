@@ -6,3 +6,4 @@ GenerateGBFSDataset/project/project/target
 GBFSCron/.gradle
 GBFSCron/.idea
 GBFSCron/build
+GBFSCron/out
