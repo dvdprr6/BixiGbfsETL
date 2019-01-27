@@ -4,6 +4,7 @@ import com.david.GenerateGBFS.json.JSON
 import com.david.GenerateGBFS.model.MODEL
 import org.json4s._
 import org.json4s.jackson.JsonMethods._
+
 object JSONParser {
   implicit val formats = DefaultFormats
 
