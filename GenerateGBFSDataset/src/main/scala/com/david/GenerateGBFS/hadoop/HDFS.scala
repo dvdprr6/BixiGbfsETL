@@ -2,27 +2,14 @@ package com.david.GenerateGBFS.hadoop
 
 import java.net.URI
 
-import com.david.GenerateGBFS.spark.SparkConnection
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.hadoop.conf.Configuration
-import org.apache.spark.sql.DataFrame
 
 object HDFS {
 
-  def read(hdfsPath: String, fileFormat: String): DataFrame = {
-    return SparkConnection.getSparkSession.read.format(fileFormat).load(hdfsPath)
-  }
-
-  def read(hdfsPath: String, fileFormat: String, columns: Seq[String]): DataFrame = {
-    val dataFrame = SparkConnection.getSparkSession.read.format(fileFormat).load(hdfsPath)
-    val selectColumns = columns.map(name => dataFrame.col(name))
-
-    return dataFrame.select(selectColumns:_*)
-  }
-
   def write(hdfsPath: String, content: String): Unit = {
     val path = new Path(hdfsPath)
-    val fs = FileSystem.get(new URI(hdfsPath), new Configuration())
+    val fs = FileSystem.get(new URI(hdfsPath), getConfiguration())
     if(fs.exists(path)){
       fs.delete(path, true)
     }
@@ -34,10 +21,18 @@ object HDFS {
 
   def remove(hdfsPath: String): Unit = {
     val path = new Path(hdfsPath)
-    val fs = FileSystem.get(new URI(hdfsPath), new Configuration())
+    val fs = FileSystem.get(new URI(hdfsPath), getConfiguration())
     if(fs.exists(path)){
       fs.delete(path, true)
     }
     fs.close()
+  }
+
+  private def getConfiguration(): Configuration = {
+    val configuration  = new Configuration()
+    configuration.set("fs.hdfs.impl", classOf[org.apache.hadoop.hdfs.DistributedFileSystem].getName)
+    configuration.set("fs.file.impl", classOf[org.apache.hadoop.fs.LocalFileSystem].getName)
+
+    return configuration
   }
 }
