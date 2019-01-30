@@ -8,6 +8,17 @@ import com.david.GenerateGBFS.model._
 import org.json.JSONObject
 
 object Main extends App{
+
+  /** REMOVE ANY UNNCESSARY HDFS PATHS **/
+  HDFS.remove(Constants.HDFS_STATION_STATUS_JSON)
+  HDFS.remove(Constants.HDFS_SYSTEM_ALERTS_JSON)
+  HDFS.remove(Constants.HDFS_SYSTEM_INFORMATION_JSON)
+  HDFS.remove(Constants.HDFS_STATION_INFORMATION_JSON)
+  HDFS.remove(Constants.HDFS_STATION_STATUS)
+  HDFS.remove(Constants.HDFS_SYSTEM_ALERTS)
+  HDFS.remove(Constants.HDFS_SYSTEM_INFORMATION)
+  HDFS.remove(Constants.HDFS_STATION_INFORMATION)
+
   var stationStatusList: List[MODEL] = List()
   var systemAlertsList: List[MODEL] = List()
   var stationInformationList: List[MODEL] = List()
@@ -17,6 +28,12 @@ object Main extends App{
   val systemAlertsResponse = HttpConnection.sendHttpGet(Constants.SYSTEM_ALERTS_JSON)
   val systemInformationResponse = HttpConnection.sendHttpGet(Constants.SYSTEM_INFORMATION_JSON)
   val stationInformationResponse = HttpConnection.sendHttpGet(Constants.STATION_INFORMATION_JSON)
+
+  /** WRITE JSON OBJECTS TO HDFS **/
+  HDFS.write(Constants.HDFS_STATION_STATUS_JSON, stationStatusResponse)
+  HDFS.write(Constants.HDFS_SYSTEM_ALERTS_JSON, systemAlertsResponse)
+  HDFS.write(Constants.HDFS_SYSTEM_INFORMATION_JSON, systemInformationResponse)
+  HDFS.write(Constants.HDFS_STATION_INFORMATION_JSON, stationInformationResponse)
 
   /** GET JSON OBJECTS **/
   val stationStatusData = new JSONObject(stationStatusResponse).getJSONObject("data").getJSONArray("stations")
@@ -45,14 +62,7 @@ object Main extends App{
     stationInformationList = stationInformationList :+ stationInformationJSON.toModel
   }
 
-  /** REMOVE ANY UNNCESSARY HDFS PATHS **/
-  HDFS.remove(Constants.HDFS_STATION_STATUS)
-  HDFS.remove(Constants.HDFS_SYSTEM_ALERTS)
-  HDFS.remove(Constants.HDFS_SYSTEM_INFORMATION)
-  HDFS.remove(Constants.HDFS_STATION_INFORMATION)
-
-  /* BUILD CSV */
-
+  /** BUILD CSV **/
   val stringBuilderStationStatus = new StringBuilder(Constants.STATION_STATUS_COLUMNS)
   stationStatusList.map(stationStatus => {
     stringBuilderStationStatus.append(stationStatus.asInstanceOf[StationStatus].station_id
