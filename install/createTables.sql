@@ -17,7 +17,8 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
-LOCATION '/user/vagrant/bixi/gbfs/staging/feed/station_status';
+LOCATION '/user/vagrant/bixi/gbfs/staging/feed/station_status'
+tblproperties('skip.header.line.count'='1');
 
 CREATE EXTERNAL TABLE IF NOT EXISTS ext_system_alerts(
   alert_id      STRING,
@@ -30,7 +31,8 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
-LOCATION '/user/vagrant/bixi/gbfs/staging/feed/system_alerts';
+LOCATION '/user/vagrant/bixi/gbfs/staging/feed/system_alerts'
+tblproperties('skip.header.line.count'='1');
 
 CREATE EXTERNAL TABLE IF NOT EXISTS ext_system_information(
   system_id     STRING,
@@ -50,14 +52,15 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
-LOCATION '/user/vagrant/bixi/gbfs/staging/feed/system_information';
+LOCATION '/user/vagrant/bixi/gbfs/staging/feed/system_information'
+tblproperties('skip.header.line.count'='1');
 
 CREATE EXTERNAL TABLE IF NOT EXISTS ext_station_information(
   station_id                STRING,
   name                      STRING,
   short_name                STRING,
-  lat                       DOUBLE,
-  lon                       DOUBLE,
+  lat                       STRING,
+  lon                       STRING,
   rental_methods            STRING,
   capacity                  INTEGER,
   eightd_has_key_dispenser  BOOLEAN,
@@ -67,7 +70,8 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ';'
 LINES TERMINATED BY '\n'
 STORED AS TEXTFILE
-LOCATION '/user/vagrant/bixi/gbfs/staging/feed/station_information';
+LOCATION '/user/vagrant/bixi/gbfs/staging/feed/station_information'
+tblproperties('skip.header.line.count'='1');
 
 CREATE EXTERNAL TABLE IF NOT EXISTS ext_OD_2018_04(
   start_date          STRING,
