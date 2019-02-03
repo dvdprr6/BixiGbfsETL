@@ -97,6 +97,12 @@ public class StationInformationDaoImpl implements StationInformationDao {
                     Bytes.toBytes(stationInformation.getHasKiosk().toString())
             );
 
+            put.addColumn(
+                    Bytes.toBytes(Constants.HBASE_COLUMN_FAMILY_GOOGLE_GEOCODING),
+                    Bytes.toBytes(Constants.HBASE_STATION_INFORMATION_QUALIFIER_GOOGLE_GEOCODING),
+                    Bytes.toBytes(stationInformation.getGoogleApiGeocodingJson().toString())
+            );
+
             stationInformationPuts.add(put);
         }
 

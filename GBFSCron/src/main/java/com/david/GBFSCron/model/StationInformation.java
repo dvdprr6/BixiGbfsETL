@@ -1,6 +1,7 @@
 package com.david.GBFSCron.model;
 
 import com.david.GBFSCron.json.StationInformationJSON;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class StationInformation {
     private Integer capacity;
     private Boolean eightdHasKeyDispenser;
     private Boolean hasKiosk;
+    private JSONObject googleApiGeocodingJson;
 
     public StationInformation(){
 
@@ -98,6 +100,14 @@ public class StationInformation {
 
     public void setHasKiosk(Boolean hasKiosk) {
         this.hasKiosk = hasKiosk;
+    }
+
+    public JSONObject getGoogleApiGeocodingJson() {
+        return googleApiGeocodingJson;
+    }
+
+    public void setGoogleApiGeocodingJson(JSONObject googleApiGeocodingJson) {
+        this.googleApiGeocodingJson = googleApiGeocodingJson;
     }
 
     public StationInformationJSON toSystemInformationJSON(){
