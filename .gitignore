@@ -7,3 +7,8 @@ GBFSCron/.gradle
 GBFSCron/.idea
 GBFSCron/build
 GBFSCron/out
+
+GBFSKafkaRegistry/.gradle
+GBFSKafkaRegistry/.idea
+GBFSKafkaRegistry/build
+GBFSKafkaRegistry/out
