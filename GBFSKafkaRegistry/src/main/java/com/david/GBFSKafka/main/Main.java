@@ -14,7 +14,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -24,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, RestClientException, URISyntaxException {
+    public static void main(String[] args) throws IOException, RestClientException {
         int identityMapCapacity = 1;
         int partitionKey = 1;
 
@@ -43,7 +42,7 @@ public class Main {
         }
     }
 
-    private static List<TripHistory> readTripHistory(String fileName) throws URISyntaxException, IOException{
+    private static List<TripHistory> readTripHistory(String fileName) throws IOException{
         List<String> inRecords = Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8);
         inRecords.remove(0);
 
