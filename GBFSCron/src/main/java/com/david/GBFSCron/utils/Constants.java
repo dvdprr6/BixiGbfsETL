@@ -18,7 +18,7 @@ public class Constants {
     public static final String HBASE_STATION_INFORMATION_QUALIFIER_HAS_KIOSK = "has_kiosk";
     public static final String HBASE_STATION_INFORMATION_QUALIFIER_GOOGLE_GEOCODING = "google_api_geocoding_json";
 
-    public static final String SYSTEM_INFORMATION_JSON = "https://api-core.bixi.com/gbfs/en/station_information.json";
+    public static final String STATION_INFORMATION_JSON = "https://api-core.bixi.com/gbfs/en/station_information.json";
 
     public static final String GOOGLE_API_URL = "https://maps.googleapis.com/maps/api/geocode/json";
 }

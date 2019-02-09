@@ -36,7 +36,7 @@ public class Main {
         List<StationInformation> stationInformationList = new ArrayList<StationInformation>();
         List<BasicNameValuePair> queryParams = new ArrayList<BasicNameValuePair>();
 
-        String stationInformationJSONResponse = HttpConnectionUtilFactory.getHttpConnection().sendHttpGet(Constants.SYSTEM_INFORMATION_JSON);
+        String stationInformationJSONResponse = HttpConnectionUtilFactory.getHttpConnection().sendHttpGet(Constants.STATION_INFORMATION_JSON);
 
         JSONObject jsonObject = new JSONObject(stationInformationJSONResponse);
         JSONArray stationInformationJSONArray = jsonObject.getJSONObject("data").getJSONArray("stations");
