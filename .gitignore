@@ -12,3 +12,8 @@ GBFSKafkaRegistry/.gradle
 GBFSKafkaRegistry/.idea
 GBFSKafkaRegistry/build
 GBFSKafkaRegistry/out
+
+GBFSStream/.idea
+GBFSStream/target
+GBFSStream/project/target
+GBFSStream/project/project/target
