@@ -17,3 +17,8 @@ GBFSStream/.idea
 GBFSStream/target
 GBFSStream/project/target
 GBFSStream/project/project/target
+
+Enricher/.gradle
+Enricher/.idea
+Enricher/build
+Enricher/out
