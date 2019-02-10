@@ -32,12 +32,10 @@ public class Main {
 
         List<TripHistory> tripHistoryValues = readTripHistory(Constants.TRIP_HISTORY_PATH);
 
-        Producer<Integer, GenericRecord> producer = createProducer();
+        Producer<String, GenericRecord> producer = createProducer();
 
         for(TripHistory tripHistory : tripHistoryValues){
-            //String partitionKey = "";
-            //partitionKey++;
-            producer.send(new ProducerRecord<>(Constants.TOPIC, partitionKey, tripHistory));
+            producer.send(new ProducerRecord<>(Constants.TOPIC, String.valueOf(partitionKey), tripHistory));
             partitionKey++;
         }
     }
@@ -62,7 +60,7 @@ public class Main {
         return new TripHistory(startDate, startStationCode, endDate, endStationCode, durationSec, isMember);
     }
 
-    private static Producer<Integer, GenericRecord> createProducer(){
+    private static Producer<String, GenericRecord> createProducer(){
         Properties properties = new Properties();
         properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BOOTSTRAP_SERVERS);
         properties.put(ProducerConfig.CLIENT_ID_CONFIG, "gbfs-bixi-kafka");
