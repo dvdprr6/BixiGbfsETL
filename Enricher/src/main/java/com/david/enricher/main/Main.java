@@ -1,6 +1,6 @@
 package com.david.enricher.main;
 
-import com.david.enricher.model.TripHistory;
+import com.david.avro.TripHistory;
 import com.david.enricher.utils.Constants;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import org.apache.kafka.clients.consumer.*;
@@ -18,6 +18,12 @@ import java.util.Properties;
 public class Main {
 
     public static void main(String[] args) throws IOException{
+
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         try(Consumer<Integer, TripHistory> kafkaConsumer = createConsumer()){
             kafkaConsumer.subscribe(Collections.singleton(Constants.TRIP_HISTORY_TOPIC));
