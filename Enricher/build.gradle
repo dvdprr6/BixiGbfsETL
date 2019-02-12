@@ -1,5 +1,4 @@
 apply plugin: 'java-library'
-apply plugin: 'com.commercehub.gradle.plugin.avro-base'
 
 group 'com.david.enricher'
 version '1.0-SNAPSHOT'
@@ -10,15 +9,6 @@ targetCompatibility = 1.8
 repositories {
   mavenCentral()
   jcenter()
-}
-
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath "com.commercehub.gradle.plugin:gradle-avro-plugin:0.15.1"
-  }
 }
 
 dependencies {
@@ -54,13 +44,6 @@ jar {
   }
 }
 
-task generateAvro(type: com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask) {
-  source('src/main/resources/avro')
-  outputDir = file('src/main/java/')
-}
-
 task buildJar(type: Copy){
   dependsOn jar
 }
-
-compileJava.source(generateAvro.outputs)
