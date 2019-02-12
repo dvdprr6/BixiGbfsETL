@@ -8,10 +8,10 @@ GBFSCron/.idea
 GBFSCron/build
 GBFSCron/out
 
-GBFSKafkaRegistry/.gradle
-GBFSKafkaRegistry/.idea
-GBFSKafkaRegistry/build
-GBFSKafkaRegistry/out
+TripHistoryProducer/.gradle
+TripHistoryProducer/.idea
+TripHistoryProducer/build
+TripHistoryProducer/out
 
 GBFSStream/.idea
 GBFSStream/target
@@ -22,3 +22,8 @@ Enricher/.gradle
 Enricher/.idea
 Enricher/build
 Enricher/out
+
+AvroRegistrySchema/.gradle
+AvroRegistrySchema/.idea
+AvroRegistrySchema/build
+AvroRegistrySchema/out
