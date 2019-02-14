@@ -24,7 +24,7 @@ public class StationInformationDaoImpl implements StationInformationDao {
     }
 
     @Override
-    public List<StationInformation> getById(String id) {
+    public StationInformation getById(String id) {
         Result result = null;
 
         Get get = new Get(Bytes.toBytes(id));
