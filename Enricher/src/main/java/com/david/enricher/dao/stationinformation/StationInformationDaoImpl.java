@@ -10,7 +10,6 @@ import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
-import java.util.List;
 
 public class StationInformationDaoImpl implements StationInformationDao {
     private Table table;
