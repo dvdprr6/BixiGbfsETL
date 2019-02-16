@@ -7,6 +7,11 @@ version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+def enrichedLibDir = '/home/david/IdeaProjects/BixiGbfsETL/Enricher/lib'
+def tripProducerLibDir = '/home/david/IdeaProjects/BixiGbfsETL/TripHistoryProducer/lib'
+def avroRegBuildDir = '/home/david/IdeaProjects/BixiGbfsETL/AvroRegistrySchema/build/libs'
+def avroRegJar = '/AvroRegistrySchema-1.0-SNAPSHOT.jar'
+
 repositories {
   mavenCentral()
   jcenter()
@@ -39,8 +44,28 @@ task generateAvro(type: com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask)
   outputDir = file('src/main/java/')
 }
 
+task cleanOldJars(type: Delete){
+  delete enrichedLibDir + avroRegJar
+  delete tripProducerLibDir + avroRegJar
+}
+
+task deployToTripHistoryProducer(type: Copy){
+  from avroRegBuildDir
+  into tripProducerLibDir
+  include '*.jar'
+}
+
+task deployToEnrich(type: Copy){
+  from avroRegBuildDir
+  into enrichedLibDir
+  include '*.jar'
+}
+
 task buildJar(type: Copy){
   dependsOn jar
+  dependsOn cleanOldJars
+  dependsOn deployToTripHistoryProducer
+  dependsOn deployToEnrich
 }
 
 compileJava.source(generateAvro.outputs)
