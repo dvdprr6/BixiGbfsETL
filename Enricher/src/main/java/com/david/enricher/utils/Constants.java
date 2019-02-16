@@ -18,7 +18,7 @@ public class Constants {
     public static final String HBASE_STATION_INFORMATION_QUALIFIER_GOOGLE_GEOCODING = "google_api_geocoding_json";
 
     public static final String TRIP_HISTORY_TOPIC = "trip_history";
+    public static final String ENRICH_TOPIC = "enrich_trip";
     public static final String BOOTSTRAP_SERVERS = "localhost:9092";
     public static final String SCHEMA_REGISTRY_URL = "http://localhost:8081";
-    //public static final String TRIP_HISTORY_PATH = "/home/vagrant/projects/BixiGbfsETL/trip_history";
 }
