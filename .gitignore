@@ -13,10 +13,10 @@ TripHistoryProducer/.idea
 TripHistoryProducer/build
 TripHistoryProducer/out
 
-GBFSStream/.idea
-GBFSStream/target
-GBFSStream/project/target
-GBFSStream/project/project/target
+Curator/.idea
+Curator/target
+Curator/project/target
+Curator/project/project/target
 
 Enricher/.gradle
 Enricher/.idea
