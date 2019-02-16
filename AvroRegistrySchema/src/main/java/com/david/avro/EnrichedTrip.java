@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 365383038706395995L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EnrichedTrip\",\"namespace\":\"com.david.avro\",\"fields\":[{\"name\":\"stationInformation\",\"type\":{\"type\":\"record\",\"name\":\"StationInformation\",\"fields\":[{\"name\":\"stationId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"externalId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"shortName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lat\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lon\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rentalMethods\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}},{\"name\":\"capacity\",\"type\":\"int\"},{\"name\":\"eightdHasKeyDispenser\",\"type\":\"boolean\"},{\"name\":\"hasKiosk\",\"type\":\"boolean\"},{\"name\":\"googleApiGeocodingJson\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}},{\"name\":\"tripHistory\",\"type\":{\"type\":\"record\",\"name\":\"TripHistory\",\"fields\":[{\"name\":\"start_date\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"start_station_code\",\"type\":\"int\"},{\"name\":\"end_date\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"end_station_code\",\"type\":\"int\"},{\"name\":\"duration_sec\",\"type\":\"int\"},{\"name\":\"is_member\",\"type\":\"int\"}]}}]}");
+  private static final long serialVersionUID = -5210784147870413591L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"EnrichedTrip\",\"namespace\":\"com.david.avro\",\"fields\":[{\"name\":\"stationInformation\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"StationInformation\",\"fields\":[{\"name\":\"stationId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"externalId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"shortName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lat\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lon\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rentalMethods\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}},{\"name\":\"capacity\",\"type\":\"int\"},{\"name\":\"eightdHasKeyDispenser\",\"type\":\"boolean\"},{\"name\":\"hasKiosk\",\"type\":\"boolean\"},{\"name\":\"googleApiGeocodingJson\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}}},{\"name\":\"tripHistory\",\"type\":{\"type\":\"record\",\"name\":\"TripHistory\",\"fields\":[{\"name\":\"start_date\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"start_station_code\",\"type\":\"int\"},{\"name\":\"end_date\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"end_station_code\",\"type\":\"int\"},{\"name\":\"duration_sec\",\"type\":\"int\"},{\"name\":\"is_member\",\"type\":\"int\"}]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,7 +51,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
     return DECODER.decode(b);
   }
 
-  @Deprecated public com.david.avro.StationInformation stationInformation;
+  @Deprecated public java.util.List<com.david.avro.StationInformation> stationInformation;
   @Deprecated public com.david.avro.TripHistory tripHistory;
 
   /**
@@ -66,7 +66,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
    * @param stationInformation The new value for stationInformation
    * @param tripHistory The new value for tripHistory
    */
-  public EnrichedTrip(com.david.avro.StationInformation stationInformation, com.david.avro.TripHistory tripHistory) {
+  public EnrichedTrip(java.util.List<com.david.avro.StationInformation> stationInformation, com.david.avro.TripHistory tripHistory) {
     this.stationInformation = stationInformation;
     this.tripHistory = tripHistory;
   }
@@ -85,7 +85,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: stationInformation = (com.david.avro.StationInformation)value$; break;
+    case 0: stationInformation = (java.util.List<com.david.avro.StationInformation>)value$; break;
     case 1: tripHistory = (com.david.avro.TripHistory)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -95,7 +95,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'stationInformation' field.
    * @return The value of the 'stationInformation' field.
    */
-  public com.david.avro.StationInformation getStationInformation() {
+  public java.util.List<com.david.avro.StationInformation> getStationInformation() {
     return stationInformation;
   }
 
@@ -103,7 +103,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'stationInformation' field.
    * @param value the value to set.
    */
-  public void setStationInformation(com.david.avro.StationInformation value) {
+  public void setStationInformation(java.util.List<com.david.avro.StationInformation> value) {
     this.stationInformation = value;
   }
 
@@ -155,8 +155,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<EnrichedTrip>
     implements org.apache.avro.data.RecordBuilder<EnrichedTrip> {
 
-    private com.david.avro.StationInformation stationInformation;
-    private com.david.avro.StationInformation.Builder stationInformationBuilder;
+    private java.util.List<com.david.avro.StationInformation> stationInformation;
     private com.david.avro.TripHistory tripHistory;
     private com.david.avro.TripHistory.Builder tripHistoryBuilder;
 
@@ -174,9 +173,6 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
       if (isValidValue(fields()[0], other.stationInformation)) {
         this.stationInformation = data().deepCopy(fields()[0].schema(), other.stationInformation);
         fieldSetFlags()[0] = true;
-      }
-      if (other.hasStationInformationBuilder()) {
-        this.stationInformationBuilder = com.david.avro.StationInformation.newBuilder(other.getStationInformationBuilder());
       }
       if (isValidValue(fields()[1], other.tripHistory)) {
         this.tripHistory = data().deepCopy(fields()[1].schema(), other.tripHistory);
@@ -197,7 +193,6 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
         this.stationInformation = data().deepCopy(fields()[0].schema(), other.stationInformation);
         fieldSetFlags()[0] = true;
       }
-      this.stationInformationBuilder = null;
       if (isValidValue(fields()[1], other.tripHistory)) {
         this.tripHistory = data().deepCopy(fields()[1].schema(), other.tripHistory);
         fieldSetFlags()[1] = true;
@@ -209,7 +204,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'stationInformation' field.
       * @return The value.
       */
-    public com.david.avro.StationInformation getStationInformation() {
+    public java.util.List<com.david.avro.StationInformation> getStationInformation() {
       return stationInformation;
     }
 
@@ -218,9 +213,8 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'stationInformation'.
       * @return This builder.
       */
-    public com.david.avro.EnrichedTrip.Builder setStationInformation(com.david.avro.StationInformation value) {
+    public com.david.avro.EnrichedTrip.Builder setStationInformation(java.util.List<com.david.avro.StationInformation> value) {
       validate(fields()[0], value);
-      this.stationInformationBuilder = null;
       this.stationInformation = value;
       fieldSetFlags()[0] = true;
       return this;
@@ -234,39 +228,6 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
       return fieldSetFlags()[0];
     }
 
-    /**
-     * Gets the Builder instance for the 'stationInformation' field and creates one if it doesn't exist yet.
-     * @return This builder.
-     */
-    public com.david.avro.StationInformation.Builder getStationInformationBuilder() {
-      if (stationInformationBuilder == null) {
-        if (hasStationInformation()) {
-          setStationInformationBuilder(com.david.avro.StationInformation.newBuilder(stationInformation));
-        } else {
-          setStationInformationBuilder(com.david.avro.StationInformation.newBuilder());
-        }
-      }
-      return stationInformationBuilder;
-    }
-
-    /**
-     * Sets the Builder instance for the 'stationInformation' field
-     * @param value The builder instance that must be set.
-     * @return This builder.
-     */
-    public com.david.avro.EnrichedTrip.Builder setStationInformationBuilder(com.david.avro.StationInformation.Builder value) {
-      clearStationInformation();
-      stationInformationBuilder = value;
-      return this;
-    }
-
-    /**
-     * Checks whether the 'stationInformation' field has an active Builder instance
-     * @return True if the 'stationInformation' field has an active Builder instance
-     */
-    public boolean hasStationInformationBuilder() {
-      return stationInformationBuilder != null;
-    }
 
     /**
       * Clears the value of the 'stationInformation' field.
@@ -274,7 +235,6 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
       */
     public com.david.avro.EnrichedTrip.Builder clearStationInformation() {
       stationInformation = null;
-      stationInformationBuilder = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -358,11 +318,7 @@ public class EnrichedTrip extends org.apache.avro.specific.SpecificRecordBase im
     public EnrichedTrip build() {
       try {
         EnrichedTrip record = new EnrichedTrip();
-        if (stationInformationBuilder != null) {
-          record.stationInformation = this.stationInformationBuilder.build();
-        } else {
-          record.stationInformation = fieldSetFlags()[0] ? this.stationInformation : (com.david.avro.StationInformation) defaultValue(fields()[0]);
-        }
+        record.stationInformation = fieldSetFlags()[0] ? this.stationInformation : (java.util.List<com.david.avro.StationInformation>) defaultValue(fields()[0]);
         if (tripHistoryBuilder != null) {
           record.tripHistory = this.tripHistoryBuilder.build();
         } else {
