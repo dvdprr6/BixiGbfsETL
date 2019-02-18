@@ -14,3 +14,8 @@ libraryDependencies += "org.apache.kafka" % "kafka-clients" % "2.0.0"
 libraryDependencies += "com.github.scopt" %% "scopt" % "3.5.0"
 
 assemblyJarName in assembly := "Curator.jar"
+
+assemblyMergeStrategy in assembly := {
+  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case x => MergeStrategy.first
+}
