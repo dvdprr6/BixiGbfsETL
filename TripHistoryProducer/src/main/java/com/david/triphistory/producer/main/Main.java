@@ -25,11 +25,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException, RestClientException {
 
-        try{
-            Thread.sleep(5000);
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try{
+//            Thread.sleep(5000);
+//        }catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         int identityMapCapacity = 1;
         int partitionKey = 1;
