@@ -33,6 +33,13 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args){
+
+        try{
+            Thread.sleep(5000);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         List<StationInformation> stationInformationList = new ArrayList<StationInformation>();
         List<BasicNameValuePair> queryParams = new ArrayList<BasicNameValuePair>();
 
