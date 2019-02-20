@@ -28,7 +28,13 @@ public class StationInformationDaoImpl implements StationInformationDao {
         List<Put> stationInformationPuts = new ArrayList<Put>();
 
         for(StationInformation stationInformation : stationInformationList){
-            Put put = new Put(Bytes.toBytes(stationInformation.getStationId()), lastUpdated);
+            Put put = new Put(Bytes.toBytes(stationInformation.getShortName()), lastUpdated);
+
+            put.addColumn(
+                    Bytes.toBytes(Constants.HBASE_COLUMN_FAMILY_STATION_INFORMATION),
+                    Bytes.toBytes(Constants.HBASE_STATION_INFORMATION_QUALIFIER_STATION_ID),
+                    Bytes.toBytes(stationInformation.getStationId())
+            );
 
             put.addColumn(
                     Bytes.toBytes(Constants.HBASE_COLUMN_FAMILY_STATION_INFORMATION),
