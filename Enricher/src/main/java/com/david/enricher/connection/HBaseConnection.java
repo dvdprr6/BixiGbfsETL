@@ -13,7 +13,9 @@ public class HBaseConnection {
     public static synchronized ClusterConnection getHBaseConnection(){
         if(clusterConnection == null){
             try{
-                clusterConnection = (ClusterConnection) ConnectionFactory.createConnection(new Configuration());
+                Configuration configuration = new Configuration();
+                configuration.set("hbase.zookeeper.property.clientPort", "2182");
+                clusterConnection = (ClusterConnection) ConnectionFactory.createConnection(configuration);
             }catch(IOException e){
                 e.printStackTrace();
             }

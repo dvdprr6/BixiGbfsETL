@@ -10,8 +10,6 @@ import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class StationInformationDaoImpl implements StationInformationDao {
     private Table table;
@@ -28,7 +26,7 @@ public class StationInformationDaoImpl implements StationInformationDao {
     public StationInformation getById(int id) {
         Result result = null;
 
-        Get get = new Get(Bytes.toBytes(id));
+        Get get = new Get(Bytes.toBytes(String.valueOf(id)));
 
         try{
             result = table.get(get);
@@ -47,7 +45,8 @@ public class StationInformationDaoImpl implements StationInformationDao {
         String shortName;
         String lat;
         String lon;
-        List<String> rentalMethods = new ArrayList<String>();
+        String rentalMethods0;
+        String rentalMethods1;
         Integer capacity;
         Boolean eightdHasKeyDispenser;
         Boolean hasKiosk;
@@ -102,19 +101,19 @@ public class StationInformationDaoImpl implements StationInformationDao {
         }
 
         try{
-            rentalMethods.add(new String(result.getValue(
+            rentalMethods0 = new String(result.getValue(
                     Bytes.toBytes(Constants.HBASE_COLUMN_FAMILY_STATION_INFORMATION),
-                    Bytes.toBytes(Constants.HBASE_STATION_INFORMATION_QUALIFIER_RENTAL_METHODS_0))));
+                    Bytes.toBytes(Constants.HBASE_STATION_INFORMATION_QUALIFIER_RENTAL_METHODS_0)));
         }catch(Exception e){
-            rentalMethods.clear();
+            rentalMethods0 = "";
         }
 
         try{
-            rentalMethods.add(new String(result.getValue(
+            rentalMethods1 = new String(result.getValue(
                     Bytes.toBytes(Constants.HBASE_COLUMN_FAMILY_STATION_INFORMATION),
-                    Bytes.toBytes(Constants.HBASE_STATION_INFORMATION_QUALIFIER_RENTAL_METHODS_1))));
+                    Bytes.toBytes(Constants.HBASE_STATION_INFORMATION_QUALIFIER_RENTAL_METHODS_1)));
         }catch(Exception e){
-            rentalMethods.clear();
+            rentalMethods1 = "";
         }
 
         try{
@@ -156,7 +155,8 @@ public class StationInformationDaoImpl implements StationInformationDao {
                 shortName,
                 lat,
                 lon,
-                rentalMethods,
+                rentalMethods0,
+                rentalMethods1,
                 capacity,
                 eightdHasKeyDispenser,
                 hasKiosk,
