@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class StationInformation extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -534777093768318988L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StationInformation\",\"namespace\":\"com.david.avro\",\"fields\":[{\"name\":\"stationId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"externalId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"shortName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lat\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lon\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rentalMethods\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}},{\"name\":\"capacity\",\"type\":\"int\"},{\"name\":\"eightdHasKeyDispenser\",\"type\":\"boolean\"},{\"name\":\"hasKiosk\",\"type\":\"boolean\"},{\"name\":\"googleApiGeocodingJson\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = 4973602121886089621L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"StationInformation\",\"namespace\":\"com.david.avro\",\"fields\":[{\"name\":\"stationId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"externalId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"shortName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lat\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lon\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rentalMethods0\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"rentalMethods1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"capacity\",\"type\":\"int\"},{\"name\":\"eightdHasKeyDispenser\",\"type\":\"boolean\"},{\"name\":\"hasKiosk\",\"type\":\"boolean\"},{\"name\":\"googleApiGeocodingJson\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -57,7 +57,8 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
   @Deprecated public java.lang.String shortName;
   @Deprecated public java.lang.String lat;
   @Deprecated public java.lang.String lon;
-  @Deprecated public java.util.List<java.lang.String> rentalMethods;
+  @Deprecated public java.lang.String rentalMethods0;
+  @Deprecated public java.lang.String rentalMethods1;
   @Deprecated public int capacity;
   @Deprecated public boolean eightdHasKeyDispenser;
   @Deprecated public boolean hasKiosk;
@@ -78,20 +79,22 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
    * @param shortName The new value for shortName
    * @param lat The new value for lat
    * @param lon The new value for lon
-   * @param rentalMethods The new value for rentalMethods
+   * @param rentalMethods0 The new value for rentalMethods0
+   * @param rentalMethods1 The new value for rentalMethods1
    * @param capacity The new value for capacity
    * @param eightdHasKeyDispenser The new value for eightdHasKeyDispenser
    * @param hasKiosk The new value for hasKiosk
    * @param googleApiGeocodingJson The new value for googleApiGeocodingJson
    */
-  public StationInformation(java.lang.String stationId, java.lang.String externalId, java.lang.String name, java.lang.String shortName, java.lang.String lat, java.lang.String lon, java.util.List<java.lang.String> rentalMethods, java.lang.Integer capacity, java.lang.Boolean eightdHasKeyDispenser, java.lang.Boolean hasKiosk, java.lang.String googleApiGeocodingJson) {
+  public StationInformation(java.lang.String stationId, java.lang.String externalId, java.lang.String name, java.lang.String shortName, java.lang.String lat, java.lang.String lon, java.lang.String rentalMethods0, java.lang.String rentalMethods1, java.lang.Integer capacity, java.lang.Boolean eightdHasKeyDispenser, java.lang.Boolean hasKiosk, java.lang.String googleApiGeocodingJson) {
     this.stationId = stationId;
     this.externalId = externalId;
     this.name = name;
     this.shortName = shortName;
     this.lat = lat;
     this.lon = lon;
-    this.rentalMethods = rentalMethods;
+    this.rentalMethods0 = rentalMethods0;
+    this.rentalMethods1 = rentalMethods1;
     this.capacity = capacity;
     this.eightdHasKeyDispenser = eightdHasKeyDispenser;
     this.hasKiosk = hasKiosk;
@@ -108,11 +111,12 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
     case 3: return shortName;
     case 4: return lat;
     case 5: return lon;
-    case 6: return rentalMethods;
-    case 7: return capacity;
-    case 8: return eightdHasKeyDispenser;
-    case 9: return hasKiosk;
-    case 10: return googleApiGeocodingJson;
+    case 6: return rentalMethods0;
+    case 7: return rentalMethods1;
+    case 8: return capacity;
+    case 9: return eightdHasKeyDispenser;
+    case 10: return hasKiosk;
+    case 11: return googleApiGeocodingJson;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -127,11 +131,12 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
     case 3: shortName = (java.lang.String)value$; break;
     case 4: lat = (java.lang.String)value$; break;
     case 5: lon = (java.lang.String)value$; break;
-    case 6: rentalMethods = (java.util.List<java.lang.String>)value$; break;
-    case 7: capacity = (java.lang.Integer)value$; break;
-    case 8: eightdHasKeyDispenser = (java.lang.Boolean)value$; break;
-    case 9: hasKiosk = (java.lang.Boolean)value$; break;
-    case 10: googleApiGeocodingJson = (java.lang.String)value$; break;
+    case 6: rentalMethods0 = (java.lang.String)value$; break;
+    case 7: rentalMethods1 = (java.lang.String)value$; break;
+    case 8: capacity = (java.lang.Integer)value$; break;
+    case 9: eightdHasKeyDispenser = (java.lang.Boolean)value$; break;
+    case 10: hasKiosk = (java.lang.Boolean)value$; break;
+    case 11: googleApiGeocodingJson = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -233,19 +238,35 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
   }
 
   /**
-   * Gets the value of the 'rentalMethods' field.
-   * @return The value of the 'rentalMethods' field.
+   * Gets the value of the 'rentalMethods0' field.
+   * @return The value of the 'rentalMethods0' field.
    */
-  public java.util.List<java.lang.String> getRentalMethods() {
-    return rentalMethods;
+  public java.lang.String getRentalMethods0() {
+    return rentalMethods0;
   }
 
   /**
-   * Sets the value of the 'rentalMethods' field.
+   * Sets the value of the 'rentalMethods0' field.
    * @param value the value to set.
    */
-  public void setRentalMethods(java.util.List<java.lang.String> value) {
-    this.rentalMethods = value;
+  public void setRentalMethods0(java.lang.String value) {
+    this.rentalMethods0 = value;
+  }
+
+  /**
+   * Gets the value of the 'rentalMethods1' field.
+   * @return The value of the 'rentalMethods1' field.
+   */
+  public java.lang.String getRentalMethods1() {
+    return rentalMethods1;
+  }
+
+  /**
+   * Sets the value of the 'rentalMethods1' field.
+   * @param value the value to set.
+   */
+  public void setRentalMethods1(java.lang.String value) {
+    this.rentalMethods1 = value;
   }
 
   /**
@@ -350,7 +371,8 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
     private java.lang.String shortName;
     private java.lang.String lat;
     private java.lang.String lon;
-    private java.util.List<java.lang.String> rentalMethods;
+    private java.lang.String rentalMethods0;
+    private java.lang.String rentalMethods1;
     private int capacity;
     private boolean eightdHasKeyDispenser;
     private boolean hasKiosk;
@@ -391,25 +413,29 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
         this.lon = data().deepCopy(fields()[5].schema(), other.lon);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.rentalMethods)) {
-        this.rentalMethods = data().deepCopy(fields()[6].schema(), other.rentalMethods);
+      if (isValidValue(fields()[6], other.rentalMethods0)) {
+        this.rentalMethods0 = data().deepCopy(fields()[6].schema(), other.rentalMethods0);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.capacity)) {
-        this.capacity = data().deepCopy(fields()[7].schema(), other.capacity);
+      if (isValidValue(fields()[7], other.rentalMethods1)) {
+        this.rentalMethods1 = data().deepCopy(fields()[7].schema(), other.rentalMethods1);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.eightdHasKeyDispenser)) {
-        this.eightdHasKeyDispenser = data().deepCopy(fields()[8].schema(), other.eightdHasKeyDispenser);
+      if (isValidValue(fields()[8], other.capacity)) {
+        this.capacity = data().deepCopy(fields()[8].schema(), other.capacity);
         fieldSetFlags()[8] = true;
       }
-      if (isValidValue(fields()[9], other.hasKiosk)) {
-        this.hasKiosk = data().deepCopy(fields()[9].schema(), other.hasKiosk);
+      if (isValidValue(fields()[9], other.eightdHasKeyDispenser)) {
+        this.eightdHasKeyDispenser = data().deepCopy(fields()[9].schema(), other.eightdHasKeyDispenser);
         fieldSetFlags()[9] = true;
       }
-      if (isValidValue(fields()[10], other.googleApiGeocodingJson)) {
-        this.googleApiGeocodingJson = data().deepCopy(fields()[10].schema(), other.googleApiGeocodingJson);
+      if (isValidValue(fields()[10], other.hasKiosk)) {
+        this.hasKiosk = data().deepCopy(fields()[10].schema(), other.hasKiosk);
         fieldSetFlags()[10] = true;
+      }
+      if (isValidValue(fields()[11], other.googleApiGeocodingJson)) {
+        this.googleApiGeocodingJson = data().deepCopy(fields()[11].schema(), other.googleApiGeocodingJson);
+        fieldSetFlags()[11] = true;
       }
     }
 
@@ -443,25 +469,29 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
         this.lon = data().deepCopy(fields()[5].schema(), other.lon);
         fieldSetFlags()[5] = true;
       }
-      if (isValidValue(fields()[6], other.rentalMethods)) {
-        this.rentalMethods = data().deepCopy(fields()[6].schema(), other.rentalMethods);
+      if (isValidValue(fields()[6], other.rentalMethods0)) {
+        this.rentalMethods0 = data().deepCopy(fields()[6].schema(), other.rentalMethods0);
         fieldSetFlags()[6] = true;
       }
-      if (isValidValue(fields()[7], other.capacity)) {
-        this.capacity = data().deepCopy(fields()[7].schema(), other.capacity);
+      if (isValidValue(fields()[7], other.rentalMethods1)) {
+        this.rentalMethods1 = data().deepCopy(fields()[7].schema(), other.rentalMethods1);
         fieldSetFlags()[7] = true;
       }
-      if (isValidValue(fields()[8], other.eightdHasKeyDispenser)) {
-        this.eightdHasKeyDispenser = data().deepCopy(fields()[8].schema(), other.eightdHasKeyDispenser);
+      if (isValidValue(fields()[8], other.capacity)) {
+        this.capacity = data().deepCopy(fields()[8].schema(), other.capacity);
         fieldSetFlags()[8] = true;
       }
-      if (isValidValue(fields()[9], other.hasKiosk)) {
-        this.hasKiosk = data().deepCopy(fields()[9].schema(), other.hasKiosk);
+      if (isValidValue(fields()[9], other.eightdHasKeyDispenser)) {
+        this.eightdHasKeyDispenser = data().deepCopy(fields()[9].schema(), other.eightdHasKeyDispenser);
         fieldSetFlags()[9] = true;
       }
-      if (isValidValue(fields()[10], other.googleApiGeocodingJson)) {
-        this.googleApiGeocodingJson = data().deepCopy(fields()[10].schema(), other.googleApiGeocodingJson);
+      if (isValidValue(fields()[10], other.hasKiosk)) {
+        this.hasKiosk = data().deepCopy(fields()[10].schema(), other.hasKiosk);
         fieldSetFlags()[10] = true;
+      }
+      if (isValidValue(fields()[11], other.googleApiGeocodingJson)) {
+        this.googleApiGeocodingJson = data().deepCopy(fields()[11].schema(), other.googleApiGeocodingJson);
+        fieldSetFlags()[11] = true;
       }
     }
 
@@ -700,41 +730,80 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
     }
 
     /**
-      * Gets the value of the 'rentalMethods' field.
+      * Gets the value of the 'rentalMethods0' field.
       * @return The value.
       */
-    public java.util.List<java.lang.String> getRentalMethods() {
-      return rentalMethods;
+    public java.lang.String getRentalMethods0() {
+      return rentalMethods0;
     }
 
     /**
-      * Sets the value of the 'rentalMethods' field.
-      * @param value The value of 'rentalMethods'.
+      * Sets the value of the 'rentalMethods0' field.
+      * @param value The value of 'rentalMethods0'.
       * @return This builder.
       */
-    public com.david.avro.StationInformation.Builder setRentalMethods(java.util.List<java.lang.String> value) {
+    public com.david.avro.StationInformation.Builder setRentalMethods0(java.lang.String value) {
       validate(fields()[6], value);
-      this.rentalMethods = value;
+      this.rentalMethods0 = value;
       fieldSetFlags()[6] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'rentalMethods' field has been set.
-      * @return True if the 'rentalMethods' field has been set, false otherwise.
+      * Checks whether the 'rentalMethods0' field has been set.
+      * @return True if the 'rentalMethods0' field has been set, false otherwise.
       */
-    public boolean hasRentalMethods() {
+    public boolean hasRentalMethods0() {
       return fieldSetFlags()[6];
     }
 
 
     /**
-      * Clears the value of the 'rentalMethods' field.
+      * Clears the value of the 'rentalMethods0' field.
       * @return This builder.
       */
-    public com.david.avro.StationInformation.Builder clearRentalMethods() {
-      rentalMethods = null;
+    public com.david.avro.StationInformation.Builder clearRentalMethods0() {
+      rentalMethods0 = null;
       fieldSetFlags()[6] = false;
+      return this;
+    }
+
+    /**
+      * Gets the value of the 'rentalMethods1' field.
+      * @return The value.
+      */
+    public java.lang.String getRentalMethods1() {
+      return rentalMethods1;
+    }
+
+    /**
+      * Sets the value of the 'rentalMethods1' field.
+      * @param value The value of 'rentalMethods1'.
+      * @return This builder.
+      */
+    public com.david.avro.StationInformation.Builder setRentalMethods1(java.lang.String value) {
+      validate(fields()[7], value);
+      this.rentalMethods1 = value;
+      fieldSetFlags()[7] = true;
+      return this;
+    }
+
+    /**
+      * Checks whether the 'rentalMethods1' field has been set.
+      * @return True if the 'rentalMethods1' field has been set, false otherwise.
+      */
+    public boolean hasRentalMethods1() {
+      return fieldSetFlags()[7];
+    }
+
+
+    /**
+      * Clears the value of the 'rentalMethods1' field.
+      * @return This builder.
+      */
+    public com.david.avro.StationInformation.Builder clearRentalMethods1() {
+      rentalMethods1 = null;
+      fieldSetFlags()[7] = false;
       return this;
     }
 
@@ -752,9 +821,9 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder setCapacity(int value) {
-      validate(fields()[7], value);
+      validate(fields()[8], value);
       this.capacity = value;
-      fieldSetFlags()[7] = true;
+      fieldSetFlags()[8] = true;
       return this;
     }
 
@@ -763,7 +832,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return True if the 'capacity' field has been set, false otherwise.
       */
     public boolean hasCapacity() {
-      return fieldSetFlags()[7];
+      return fieldSetFlags()[8];
     }
 
 
@@ -772,7 +841,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder clearCapacity() {
-      fieldSetFlags()[7] = false;
+      fieldSetFlags()[8] = false;
       return this;
     }
 
@@ -790,9 +859,9 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder setEightdHasKeyDispenser(boolean value) {
-      validate(fields()[8], value);
+      validate(fields()[9], value);
       this.eightdHasKeyDispenser = value;
-      fieldSetFlags()[8] = true;
+      fieldSetFlags()[9] = true;
       return this;
     }
 
@@ -801,7 +870,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return True if the 'eightdHasKeyDispenser' field has been set, false otherwise.
       */
     public boolean hasEightdHasKeyDispenser() {
-      return fieldSetFlags()[8];
+      return fieldSetFlags()[9];
     }
 
 
@@ -810,7 +879,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder clearEightdHasKeyDispenser() {
-      fieldSetFlags()[8] = false;
+      fieldSetFlags()[9] = false;
       return this;
     }
 
@@ -828,9 +897,9 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder setHasKiosk(boolean value) {
-      validate(fields()[9], value);
+      validate(fields()[10], value);
       this.hasKiosk = value;
-      fieldSetFlags()[9] = true;
+      fieldSetFlags()[10] = true;
       return this;
     }
 
@@ -839,7 +908,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return True if the 'hasKiosk' field has been set, false otherwise.
       */
     public boolean hasHasKiosk() {
-      return fieldSetFlags()[9];
+      return fieldSetFlags()[10];
     }
 
 
@@ -848,7 +917,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder clearHasKiosk() {
-      fieldSetFlags()[9] = false;
+      fieldSetFlags()[10] = false;
       return this;
     }
 
@@ -866,9 +935,9 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return This builder.
       */
     public com.david.avro.StationInformation.Builder setGoogleApiGeocodingJson(java.lang.String value) {
-      validate(fields()[10], value);
+      validate(fields()[11], value);
       this.googleApiGeocodingJson = value;
-      fieldSetFlags()[10] = true;
+      fieldSetFlags()[11] = true;
       return this;
     }
 
@@ -877,7 +946,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       * @return True if the 'googleApiGeocodingJson' field has been set, false otherwise.
       */
     public boolean hasGoogleApiGeocodingJson() {
-      return fieldSetFlags()[10];
+      return fieldSetFlags()[11];
     }
 
 
@@ -887,7 +956,7 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
       */
     public com.david.avro.StationInformation.Builder clearGoogleApiGeocodingJson() {
       googleApiGeocodingJson = null;
-      fieldSetFlags()[10] = false;
+      fieldSetFlags()[11] = false;
       return this;
     }
 
@@ -902,11 +971,12 @@ public class StationInformation extends org.apache.avro.specific.SpecificRecordB
         record.shortName = fieldSetFlags()[3] ? this.shortName : (java.lang.String) defaultValue(fields()[3]);
         record.lat = fieldSetFlags()[4] ? this.lat : (java.lang.String) defaultValue(fields()[4]);
         record.lon = fieldSetFlags()[5] ? this.lon : (java.lang.String) defaultValue(fields()[5]);
-        record.rentalMethods = fieldSetFlags()[6] ? this.rentalMethods : (java.util.List<java.lang.String>) defaultValue(fields()[6]);
-        record.capacity = fieldSetFlags()[7] ? this.capacity : (java.lang.Integer) defaultValue(fields()[7]);
-        record.eightdHasKeyDispenser = fieldSetFlags()[8] ? this.eightdHasKeyDispenser : (java.lang.Boolean) defaultValue(fields()[8]);
-        record.hasKiosk = fieldSetFlags()[9] ? this.hasKiosk : (java.lang.Boolean) defaultValue(fields()[9]);
-        record.googleApiGeocodingJson = fieldSetFlags()[10] ? this.googleApiGeocodingJson : (java.lang.String) defaultValue(fields()[10]);
+        record.rentalMethods0 = fieldSetFlags()[6] ? this.rentalMethods0 : (java.lang.String) defaultValue(fields()[6]);
+        record.rentalMethods1 = fieldSetFlags()[7] ? this.rentalMethods1 : (java.lang.String) defaultValue(fields()[7]);
+        record.capacity = fieldSetFlags()[8] ? this.capacity : (java.lang.Integer) defaultValue(fields()[8]);
+        record.eightdHasKeyDispenser = fieldSetFlags()[9] ? this.eightdHasKeyDispenser : (java.lang.Boolean) defaultValue(fields()[9]);
+        record.hasKiosk = fieldSetFlags()[10] ? this.hasKiosk : (java.lang.Boolean) defaultValue(fields()[10]);
+        record.googleApiGeocodingJson = fieldSetFlags()[11] ? this.googleApiGeocodingJson : (java.lang.String) defaultValue(fields()[11]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
