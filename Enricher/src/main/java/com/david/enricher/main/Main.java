@@ -6,17 +6,11 @@ import com.david.enricher.dao.stationinformation.StationInformationFactory;
 import com.david.enricher.hadoop.HDFS;
 import com.david.enricher.utils.Constants;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
-import io.confluent.kafka.serializers.KafkaAvroSerializer;
-import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.consumer.*;
 
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -29,7 +23,7 @@ public class Main {
 
         StringBuilder stringBuilder = new StringBuilder(Constants.ENRICH_CSV_HEADER + "\n");
 
-        try(Consumer<Integer, TripHistory> kafkaConsumer = createConsumer(); Producer<String, GenericRecord> kafkaProducer = createProducer()){
+        try(Consumer<Integer, TripHistory> kafkaConsumer = createConsumer()){
             kafkaConsumer.subscribe(Collections.singleton(Constants.TRIP_HISTORY_TOPIC));
 
             ConsumerRecords<Integer, TripHistory> tripHistoryRecords = kafkaConsumer.poll(Duration.ofMillis(1000));
@@ -91,13 +85,4 @@ public class Main {
         return new KafkaConsumer<Integer, TripHistory>(properties);
     }
 
-    private static Producer<String, GenericRecord> createProducer(){
-        Properties properties = new Properties();
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BOOTSTRAP_SERVERS);
-        properties.put(ProducerConfig.CLIENT_ID_CONFIG, "gbfs-bixi-kafka");
-        properties.put("schema.registry.url", Constants.SCHEMA_REGISTRY_URL);
-        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
-        return new KafkaProducer<String, GenericRecord>(properties);
-    }
 }
