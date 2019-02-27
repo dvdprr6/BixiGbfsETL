@@ -1,9 +1,9 @@
 package com.david.enricher.main;
 
-import com.david.avro.EnrichedTrip;
 import com.david.avro.StationInformation;
 import com.david.avro.TripHistory;
 import com.david.enricher.dao.stationinformation.StationInformationFactory;
+import com.david.enricher.hadoop.HDFS;
 import com.david.enricher.utils.Constants;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
@@ -15,14 +15,11 @@ import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Properties;
 
 
@@ -30,38 +27,53 @@ public class Main {
 
     public static void main(String[] args){
 
-        try{
-            Thread.sleep(5000);
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        StringBuilder stringBuilder = new StringBuilder(Constants.ENRICH_CSV_HEADER + "\n");
 
         try(Consumer<Integer, TripHistory> kafkaConsumer = createConsumer(); Producer<String, GenericRecord> kafkaProducer = createProducer()){
             kafkaConsumer.subscribe(Collections.singleton(Constants.TRIP_HISTORY_TOPIC));
-            List<StationInformation> stationInformationList = new ArrayList<StationInformation>();
-            int partitionKey = 1;
 
-            //while(kafkaConsumer.listTopics().size() > 0){
-            while(true){
-                ConsumerRecords<Integer, TripHistory> tripHistoryRecords = kafkaConsumer.poll(Duration.ofMillis(1000));
-                for(ConsumerRecord<Integer, TripHistory> record : tripHistoryRecords){
-                    TripHistory tripHistory = record.value();
-                    StationInformation startStationInformation = StationInformationFactory.getStationInformationDao().getById(tripHistory.getStartStationCode());
-                    StationInformation endStationInformation = StationInformationFactory.getStationInformationDao().getById(tripHistory.getEndStationCode());
+            ConsumerRecords<Integer, TripHistory> tripHistoryRecords = kafkaConsumer.poll(Duration.ofMillis(1000));
+            for(ConsumerRecord<Integer, TripHistory> record : tripHistoryRecords){
+                TripHistory tripHistory = record.value();
+                StationInformation startStationInformation = StationInformationFactory.getStationInformationDao().getById(tripHistory.getStartStationCode());
+                StationInformation endStationInformation = StationInformationFactory.getStationInformationDao().getById(tripHistory.getEndStationCode());
 
-                    stationInformationList.add(startStationInformation);
-                    stationInformationList.add(endStationInformation);
-
-                    EnrichedTrip enrichedTrip = new EnrichedTrip(stationInformationList, tripHistory);
-
-                    kafkaProducer.send(new ProducerRecord<>(Constants.ENRICH_TOPIC, String.valueOf(partitionKey), enrichedTrip));
-
-                    partitionKey++;
-
-                    stationInformationList.clear();
-                }
+                stringBuilder.append(tripHistory.getStartDate() + Constants.DELIMITER +
+                        tripHistory.getStartStationCode() + Constants.DELIMITER +
+                        startStationInformation.getStationId() + Constants.DELIMITER +
+                        startStationInformation.getExternalId() + Constants.DELIMITER +
+                        startStationInformation.getName() + Constants.DELIMITER +
+                        startStationInformation.getShortName() + Constants.DELIMITER +
+                        startStationInformation.getLat() + Constants.DELIMITER +
+                        startStationInformation.getLon() + Constants.DELIMITER +
+                        startStationInformation.getRentalMethods0() + Constants.DELIMITER +
+                        startStationInformation.getRentalMethods1() + Constants.DELIMITER +
+                        startStationInformation.getCapacity() + Constants.DELIMITER +
+                        startStationInformation.getEightdHasKeyDispenser() + Constants.DELIMITER +
+                        startStationInformation.getHasKiosk() + Constants.DELIMITER +
+                        startStationInformation.getGoogleApiGeocodingJson() + Constants.DELIMITER +
+                        tripHistory.getEndDate() + Constants.DELIMITER +
+                        tripHistory.getEndStationCode() + Constants.DELIMITER +
+                        endStationInformation.getStationId() + Constants.DELIMITER +
+                        endStationInformation.getExternalId() + Constants.DELIMITER +
+                        endStationInformation.getName() + Constants.DELIMITER +
+                        endStationInformation.getShortName() + Constants.DELIMITER +
+                        endStationInformation.getLat() + Constants.DELIMITER +
+                        endStationInformation.getLon() + Constants.DELIMITER +
+                        endStationInformation.getRentalMethods0() + Constants.DELIMITER +
+                        endStationInformation.getRentalMethods1() + Constants.DELIMITER +
+                        endStationInformation.getCapacity() + Constants.DELIMITER +
+                        endStationInformation.getEightdHasKeyDispenser() + Constants.DELIMITER +
+                        endStationInformation.getHasKiosk() + Constants.DELIMITER +
+                        endStationInformation.getGoogleApiGeocodingJson() + Constants.DELIMITER +
+                        tripHistory.getDurationSec() + Constants.DELIMITER +
+                        tripHistory.getIsMember() + "\n");
             }
         }
+
+        HDFS.write(Constants.ENRICH_CSV_FILE, stringBuilder.toString());
+
+        stringBuilder.setLength(0);
 
     }
 
