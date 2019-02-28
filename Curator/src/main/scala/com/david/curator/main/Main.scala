@@ -1,34 +1,36 @@
 package com.david.curator.main
 
-import java.util.Collections
-
-import com.david.avro.EnrichedTrip
 import com.david.curator.connection.SparkConnection
-import com.david.curator.kafka.Kafka
-import com.david.curator.util.Constants
+import com.david.curator.util.{Constants, SchemaGeneration}
+import com.david.curator.stream.Stream
 
 object Main extends App{
-  Thread.sleep(5000)
-  //val kafkaConsumer = Kafka.createConsumer
 
-  //kafkaConsumer.subscribe(Collections.singleton(Constants.ENRICH_TOPIC))
+  val enrichFile = SparkConnection.getSparkStreaming.textFileStream(Constants.ENRICH_CSV_FILE_STREAMING)
 
-  //SparkConnection.getSparkSession.sql("use bixi_feed")
-  //SparkConnection.getSparkSession.sql("select * from ext_station_status")
+  val enrichDS = Stream.streamEnrichCSVFile(enrichFile)
 
-  //SparkConnection.getSparkSession.sql("show databases").show
+  val schema = SchemaGeneration.getSchema(Constants.ENRICH_CSV_SCHEMA)
 
-  //SparkConnection.getSparkStreaming.start()
-  //SparkConnection.getSparkStreaming.awaitTermination()
-  val enrichTripDS = Kafka.createConsumerStream
+  SparkConnection.getSparkSession.sql("use bixi_feed")
 
-  enrichTripDS.foreachRDD{ rdd =>
-    //rdd.foreach(enrichTrip => println(enrichTrip.getTripHistory.getStartStationCode))
-    //val enrichTripDF = SparkConnection.getSparkSession.createDataFrame(rdd, EnrichedTrip.getClassSchema)
+  enrichDS.foreachRDD{rdd =>
+    val enrichDF = SparkConnection.getSparkSession.createDataFrame(rdd, schema)
+
+    enrichDF.foreachPartition{partition =>
+
+      partition.foreach { record =>
+        val startStationId = record.getAs[String]("start_station_id")
+        val endStationId = record.getAs[String]("end_station_id")
+
+        val startStationStatusDF = SparkConnection.getSparkSession.sql("select * from ext_station_status where station_id = " + startStationId)
+        val endStationStatusDF = SparkConnection.getSparkSession.sql("select * from ext_station_status where station_id = " + endStationId)
+
+      }
+    }
   }
 
 
   SparkConnection.getSparkStreaming.start()
   SparkConnection.getSparkStreaming.awaitTermination()
-
 }
