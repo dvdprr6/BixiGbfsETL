@@ -20,8 +20,10 @@ import java.util.Properties;
 public class Main {
 
     public static void main(String[] args){
+        StringBuilder stringBuilder = new StringBuilder();
 
-        StringBuilder stringBuilder = new StringBuilder(Constants.ENRICH_CSV_HEADER + "\n");
+        HDFS.delete(Constants.ENRICH_CSV_FILE_STAGING);
+        HDFS.delete(Constants.ENRICH_CSV_FILE_STREAMING);
 
         try(Consumer<Integer, TripHistory> kafkaConsumer = createConsumer()){
             kafkaConsumer.subscribe(Collections.singleton(Constants.TRIP_HISTORY_TOPIC));
@@ -65,7 +67,9 @@ public class Main {
             }
         }
 
-        HDFS.write(Constants.ENRICH_CSV_FILE, stringBuilder.toString());
+        HDFS.write(Constants.ENRICH_CSV_FILE_STAGING, stringBuilder.toString());
+
+        HDFS.move(Constants.ENRICH_CSV_FILE_STAGING, Constants.ENRICH_CSV_FILE_STREAMING);
 
         stringBuilder.setLength(0);
 

@@ -23,36 +23,6 @@ public class Constants {
 
     public static final String DELIMITER = ";";
 
-    public static final String ENRICH_CSV_HEADER = "start_date" + DELIMITER +
-            "start_station_code" + DELIMITER +
-            "start_station_id" + DELIMITER +
-            "start_external_id"+ DELIMITER +
-            "start_name" + DELIMITER +
-            "start_short_name" + DELIMITER +
-            "start_lat" + DELIMITER +
-            "start_lon" + DELIMITER +
-            "start_rental_methods0" + DELIMITER +
-            "start_rental_methods1" + DELIMITER +
-            "start_capacity" + DELIMITER +
-            "start_eightd_has_key_dispenser" + DELIMITER +
-            "start_has_kiosk" + DELIMITER +
-            "start_google_api_geocoding_json" + DELIMITER +
-            "end_date" + DELIMITER +
-            "end_station_code" + DELIMITER +
-            "end_station_id" + DELIMITER +
-            "end_external_id" + DELIMITER +
-            "end_name" + DELIMITER +
-            "end_short_name" + DELIMITER +
-            "end_lat" + DELIMITER +
-            "end_lon" + DELIMITER +
-            "end_rental_methods0" + DELIMITER +
-            "end_rental_methods1" + DELIMITER +
-            "end_capacity" + DELIMITER +
-            "end_eightd_has_key_dispenser" + DELIMITER +
-            "end_has_kiosk" + DELIMITER +
-            "end_google_api_geocoding_json" + DELIMITER +
-            "duration_sec" + DELIMITER +
-            "is_memember";
-
-    public static final String ENRICH_CSV_FILE = "hdfs://localhost:9000/user/vagrant/bixi/gbfs/csv/enrich.csv";
+    public static final String ENRICH_CSV_FILE_STAGING = "hdfs://localhost:9000/user/vagrant/bixi/gbfs/csv/enrich/staging/enrich.csv";
+    public static final String ENRICH_CSV_FILE_STREAMING = "hdfs://localhost:9000/user/vagrant/bixi/gbfs/csv/enrich/streaming/enrich.csv";
 }
